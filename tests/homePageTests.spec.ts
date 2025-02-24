@@ -28,6 +28,8 @@ test('Test 1 Complete sign in form', async ({ page }) => {
 
   await emailInput.fill('test@test.com')
   await passwordInput.fill('Password1')
+  await expect(emailInput).toHaveValue('test@test.com')
+  await expect(passwordInput).toHaveValue('Password1')
 });
 
 test('Test 2 Check list group', async ({ page }) => {
@@ -73,6 +75,6 @@ test('Test 5 Check button interaction', async ({ page }) => {
 
 test('Test 6 Check table cell value', async ({ page }) => {
   const test6Div = page.locator('#test-6-div')
-  const cellValue = await getCellValue(page, 2, 2)
+  const cellValue = await getCellValue(test6Div, 2, 2)
   await expect(cellValue).toHaveText('Ventosanzap')
 });
